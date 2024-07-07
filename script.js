@@ -9,16 +9,36 @@ function resize() {
   canvas.height = height;
   render();
 }
-function render() {
+// Convert degrees to radians
+function degreesToRadians(degrees) {
+  return degrees * (Math.PI / 180);
+}
+
+function render(iter) {
+  const start = 0.5;
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
 
   var height = c.getBoundingClientRect().height;
   var width = c.getBoundingClientRect().width;
-  ctx.moveTo(0, 0);
-  ctx.lineTo(width, height);
-  ctx.stroke();
+  // Clear, must come first
+  ctx.clearRect(0, 0, width, height);
+
+  
+  // TOP TRIANGLE
+  ctx.beginPath();
+  // Move to top right side
+  ctx.moveTo(width, height,);
+  
+  // Move to top side
+  ctx.lineTo(width - width*start, height);
+  
+  // Intersecting with right side?
+  (width - width*start)
+  
+  
+  //
 }
 
-// start
 resize();
+console.log(degreesToRadians(330))
