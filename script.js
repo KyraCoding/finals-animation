@@ -1,21 +1,21 @@
 window.addEventListener("resize", function () {
   resize();
 });
-function resize() {
+function resize(start) {
   var height = document.body.getBoundingClientRect().height;
   var width = document.body.getBoundingClientRect().width;
   var canvas = document.getElementById("myCanvas");
   canvas.width = width;
   canvas.height = height;
-  render();
+  render(start);
 }
 // Convert degrees to radians
 function degreesToRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
 
-function render(iter) {
-  const start = 0.5;
+function render(start) {
+  
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
 
@@ -24,21 +24,36 @@ function render(iter) {
   // Clear, must come first
   ctx.clearRect(0, 0, width, height);
 
-  
   // TOP TRIANGLE
   ctx.beginPath();
   // Move to top right side
-  ctx.moveTo(width, height,);
-  
+  ctx.moveTo(width, 0);
+
   // Move to top side
-  ctx.lineTo(width - width*start, height);
+  ctx.lineTo(width - width * start, 0);
+
+  ctx.lineTo(
+    width,
+    -(width - (width - width * start)) * Math.tan(degreesToRadians(300))
+  );
+  ctx.lineTo(width, 0);
+  ctx.closePath();
+
+  // Set the fill color
+  ctx.fillStyle = "#D21F3C";
+  ctx.fill();
+
   
-  // Intersecting with right side?
-  (width - width*start)
-  
-  
-  //
+  // BOTTOM TRIANGLE
+  ctx.beginPath();
+  ctx.moveTo(0,height);
+  ctx.lineTo(width*start,height)
+  ctx.lineTo(0,)
+  ctx.lineTo(0,height)
+  ctx.closePath();
+  ctx.fillStyle = "#D21F3C";
+  ctx.fill();
 }
 
-resize();
-console.log(degreesToRadians(330))
+resize(0.5)
+
