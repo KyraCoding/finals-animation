@@ -14,7 +14,8 @@ function degreesToRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
 
-function render(start) {
+function render(iteration) {
+  var start = iteration*(width-(height/Math.tan(degreesToRadians(300))))/(2*width)
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
 
@@ -60,11 +61,6 @@ function render(start) {
   // Set the fill color
   ctx.fillStyle = "#D21F3C";
   ctx.fill();
-  
-  ctx.moveTo((-height-(width - width * start))/Math.tan(degreesToRadians(300)),height);
-  ctx.lineTo((-height-(width - width * start))/Math.tan(degreesToRadians(300)),0)
-  ctx.stroke();
-  //alert(width*start)
 }
 
-resize(0.5);
+resize(0.3);
